@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>OCR Test</h2>
+
+<form id="form">
+  <input type="file" id="file" />
+  <button type="submit">Upload</button>
+</form>
+
+<pre id="result"></pre>
+
+<script>
+document.getElementById("form").onsubmit = async (e) => {
+  e.preventDefault();
+
+  const file = document.getElementById("file").files[0];
+
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const res = await fetch("http://localhost:3000/scan", {
+    method: "POST",
+    body: formData
+  });
+
+  const data = await res.json();
+
+  document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+};
+</script>
+
+</body>
+</html>
