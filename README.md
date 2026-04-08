@@ -73,7 +73,7 @@ http://localhost:3000
 
 * Form-data:
 
-  * `image` → Upload image file
+  * image → Upload image file
 
 #### Response:
 
